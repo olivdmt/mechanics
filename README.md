@@ -70,15 +70,10 @@ Crie uma conta na tela de cadastro e entre com usuário e senha. As rotas de neg
 - Ordens de serviço
 - Estoque, fornecedores e movimentações
 
-## Deploy e demonstração
+## Deploy
 
-- **Frontend publicado:** 
-- **Backend publicado:** 
+- **Frontend publicado:** [ac32c656b4dbd5da36153e1bffe300d7f7453a3c](https://github.com/olivdmt/mechanics/commit/ac32c656b4dbd5da36153e1bffe300d7f7453a3c)
+- **Backend publicado:** [438d35459809c4a6720d16aa272e47cae73888b3](https://github.com/olivdmt/mechanics/commit/438d35459809c4a6720d16aa272e47cae73888b3)
 - **Repositório GitHub:** preencher após publicar o repositório
 - **Vídeo de demonstração (Drive/YouTube):** pendente
 
-Grave um vídeo de até 5–7 minutos mostrando cadastro, listagem, edição e exclusão de um registro. Inclua login e acesso a uma rota protegida para demonstrar o bônus de autenticação.
-
-## Submissão
-
-Crie um arquivo `.txt` ou `.md` com os links do repositório GitHub e do vídeo e envie-o pela plataforma da disciplina.
