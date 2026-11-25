@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1040" role="img" aria-labelledby="title desc">
+  <title id="title">Arquitetura de dados da Mechanics API</title>
+  <desc id="desc">Diagrama entidade relacionamento para clientes, veículos, ordens de serviço, itens da ordem, estoque, fornecedores e movimentações.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f6f8fc}.card{fill:#fff;stroke:#334155;stroke-width:2;rx:14}.head{fill:#183153}.ht{font:700 22px Arial,sans-serif;fill:#fff}.row{font:16px Arial,sans-serif;fill:#172033}.muted{font:14px Arial,sans-serif;fill:#64748b}.edge{fill:none;stroke:#64748b;stroke-width:3}.edge2{fill:none;stroke:#0f766e;stroke-width:3}.label{font:15px Arial,sans-serif;fill:#334155;paint-order:stroke;stroke:#f6f8fc;stroke-width:6px;stroke-linejoin:round}.key{font:700 14px Arial,sans-serif;fill:#0f766e}
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#64748b"/></marker>
+    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0f766e"/></marker>
+  </defs>
+  <rect class="bg" width="1600" height="1040"/>
+  <text x="64" y="68" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#102a43">Mechanics API · modelo conceitual</text>
+  <text x="64" y="100" class="muted">Entidades, chaves e relações representadas no diagrama de arquitetura</text>
+
+  <!-- Relationships behind the entity cards -->
+  <path class="edge" marker-end="url(#arrow)" d="M390 255H495"/><text class="label" x="418" y="240">1 : N</text>
+  <path class="edge" marker-end="url(#arrow)" d="M810 255H915"/><text class="label" x="838" y="240">1 : N</text>
+  <path class="edge2" marker-end="url(#arrow2)" d="M1125 385V480"/><text class="label" x="1138" y="438">1 : N</text>
+  <path class="edge2" marker-end="url(#arrow2)" d="M915 560H810"/><text class="label" x="830" y="545">N : 1</text>
+  <path class="edge" marker-end="url(#arrow)" d="M390 720H495"/><text class="label" x="418" y="705">N : 1</text>
+  <path class="edge" marker-end="url(#arrow)" d="M600 835V880"/><text class="label" x="613" y="864">N : 1</text>
+
+  <!-- CLIENTES -->
+  <g transform="translate(70 160)"><rect class="card" width="320" height="290"/><rect class="head" width="320" height="48" rx="14"/><path d="M0 34h320v14H0z" fill="#183153"/><text class="ht" x="18" y="32">CLIENTES</text>
+    <text class="key" x="18" y="80">PK · id_cliente (UUID)</text><text class="row" x="18" y="111">nome</text><text class="row" x="18" y="140">cpfcnpj</text><text class="row" x="18" y="169">telefone</text><text class="row" x="18" y="198">endereco</text><text class="row" x="18" y="227">historico</text><text class="row" x="18" y="256">status</text></g>
+  <!-- VEICULOS -->
+  <g transform="translate(495 160)"><rect class="card" width="315" height="290"/><rect class="head" width="315" height="48" rx="14"/><path d="M0 34h315v14H0z" fill="#183153"/><text class="ht" x="18" y="32">VEÍCULOS</text>
+    <text class="key" x="18" y="80">PK · id_veiculo (UUID)</text><text class="key" x="18" y="107">FK · id_cliente</text><text class="row" x="18" y="140">placa</text><text class="row" x="18" y="169">modelo · marca</text><text class="row" x="18" y="198">ano</text><text class="row" x="18" y="227">quilometragem</text></g>
+  <!-- OS -->
+  <g transform="translate(915 160)"><rect class="card" width="370" height="290"/><rect class="head" width="370" height="48" rx="14"/><path d="M0 34h370v14H0z" fill="#183153"/><text class="ht" x="18" y="32">ORDENS DE SERVIÇO</text>
+    <text class="key" x="18" y="80">PK · id_os (UUID)</text><text class="key" x="18" y="107">FK · id_veiculo</text><text class="row" x="18" y="140">abertura</text><text class="row" x="18" y="169">diagnostico</text><text class="row" x="18" y="198">servico_realizado</text><text class="row" x="18" y="227">mao_de_obra · valor_total</text><text class="row" x="18" y="256">status</text></g>
+  <!-- MOVIMENTACOES -->
+  <g transform="translate(70 570)"><rect class="card" width="320" height="275"/><rect class="head" width="320" height="48" rx="14"/><path d="M0 34h320v14H0z" fill="#183153"/><text class="ht" x="18" y="32">MOVIMENTAÇÕES</text>
+    <text class="key" x="18" y="80">PK · id_movimentacao</text><text class="key" x="18" y="107">FK · id_estoque</text><text class="row" x="18" y="140">tipo: ENTRADA · SAIDA · AJUSTE</text><text class="row" x="18" y="169">quantidade · data_hora</text><text class="row" x="18" y="198">motivo</text><text class="muted" x="18" y="237">Referência à OS prevista no desenho</text></g>
+  <!-- ESTOQUE -->
+  <g transform="translate(495 570)"><rect class="card" width="315" height="265"/><rect class="head" width="315" height="48" rx="14"/><path d="M0 34h315v14H0z" fill="#183153"/><text class="ht" x="18" y="32">ESTOQUE</text>
+    <text class="key" x="18" y="80">PK · id_estoque (UUID)</text><text class="key" x="18" y="107">FK · id_fornecedor</text><text class="row" x="18" y="140">pecas</text><text class="row" x="18" y="169">quantidade</text><text class="row" x="18" y="198">preco (NUMERIC 10,2)</text></g>
+  <!-- ITENS OS -->
+  <g transform="translate(915 480)"><rect class="card" width="370" height="220"/><rect class="head" width="370" height="48" rx="14"/><path d="M0 34h370v14H0z" fill="#183153"/><text class="ht" x="18" y="32">ITENS_OS</text>
+    <text class="key" x="18" y="80">PK · id_item_os (UUID)</text><text class="key" x="18" y="107">FK · id_os · id_estoque</text><text class="row" x="18" y="140">quantidade_utilizada</text><text class="row" x="18" y="169">valor_unitario_aplicado</text></g>
+  <!-- FORNECEDORES -->
+  <g transform="translate(495 880)"><rect class="card" width="315" height="145"/><rect class="head" width="315" height="48" rx="14"/><path d="M0 34h315v14H0z" fill="#183153"/><text class="ht" x="18" y="32">FORNECEDORES</text>
+    <text class="key" x="18" y="80">PK · id_fornecedor (UUID)</text><text class="row" x="18" y="108">razao_social · nome_fantasia</text><text class="row" x="18" y="132">documento · email · telefone · CEP</text></g>
+
+  <rect x="915" y="770" width="570" height="140" rx="12" fill="#ecfdf5" stroke="#0f766e" stroke-width="2"/>
+  <text x="940" y="808" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#115e59">Observação de implementação</text>
+  <text x="940" y="840" class="row">Itens_OS e o vínculo da movimentação com OS</text>
+  <text x="940" y="866" class="row">estão no modelo conceitual; ainda não existem no código.</text>
+  <text x="70" y="995" class="muted">PK = chave primária · FK = chave estrangeira · Cardinalidades conforme o desenho de arquitetura</text>
+</svg>
